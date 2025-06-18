@@ -1,4 +1,4 @@
-// app/types.ts
+
 export type Compound = {
   id: string | number;
   name: string;

@@ -22,7 +22,8 @@ export const searchCompounds = async (query: string): Promise<Compound[]> => {
     }
     // Handle entries format
     else if (response.data.entries) {
-      response.data.entries.forEach((entry, index) => {
+      // Fix: Remove unused index parameter
+      response.data.entries.forEach((entry) => {
         results.push({
           id: entry.id,
           name: entry.name,
