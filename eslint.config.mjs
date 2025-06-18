@@ -7,7 +7,10 @@ import globals from "globals";
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   // Base JavaScript configuration
-  js.configs.recommended,
+  {
+    ...js.configs.recommended,
+    ignores: ["**/*.d.ts"]
+  },
   
   // TypeScript configuration
   {
@@ -16,8 +19,13 @@ export default [
       parser: typescriptParser,
       parserOptions: {
         project: "./tsconfig.json",
-        tsconfigRootDir: import.meta.dirname,
+        tsconfigRootDir: process.cwd(),
       },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        React: "readonly",
+      }
     },
     plugins: {
       "@typescript-eslint": typescriptEslint,
@@ -44,20 +52,12 @@ export default [
     rules: {
       ...nextPlugin.configs.recommended.rules,
       ...nextPlugin.configs["core-web-vitals"].rules,
-      // Custom Next.js rules
-      "@next/next/no-html-link-for-pages": ["error", "app/"],
+      "@next/next/no-html-link-for-pages": "off", // Disabled for App Router
     },
   },
   
-  // Global settings
+  // Global rules
   {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        React: "readonly",
-      },
-    },
     rules: {
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
@@ -73,7 +73,6 @@ export default [
       "build/",
       "coverage/",
       "public/",
-      "*.d.ts",
     ],
   },
 ];
