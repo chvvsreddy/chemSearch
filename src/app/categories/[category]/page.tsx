@@ -2,6 +2,7 @@ import { getCompoundsByCategory } from '../../utils/pubchem';
 import CompoundCard from '../../components/CompoundCard';
 import { Compound } from '../../types';
 
+// Correct props type for App Router pages
 interface CategoryPageProps {
   params: {
     category: string;
