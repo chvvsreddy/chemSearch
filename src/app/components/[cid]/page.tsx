@@ -2,6 +2,7 @@
 
 import { getCompoundDetails } from '../../utils/pubchem';
 import { Compound } from '../../types';
+import Image from 'next/image';
 
 export default async function CompoundPage({
   params
@@ -58,7 +59,7 @@ export default async function CompoundPage({
             <div>
               <h2 className="text-xl font-semibold mb-4">Chemical Structure</h2>
               <div className="bg-gray-100 border-2 border-dashed rounded-xl w-full h-64 flex items-center justify-center">
-                <img 
+                <Image
                   src={`https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid=${compound.cid}&t=l`} 
                   alt={`Structure of ${compound.name}`}
                   className="max-h-full max-w-full p-4"

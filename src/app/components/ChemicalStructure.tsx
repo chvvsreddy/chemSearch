@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function ChemicalStructure({ cid, name }: { cid: string; name: string }) {
@@ -14,7 +15,7 @@ export default function ChemicalStructure({ cid, name }: { cid: string; name: st
   }
 
   return (
-    <img 
+    <Image 
       src={`https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid=${cid}&t=l`} 
       alt={`Structure of ${name}`}
       className="max-h-full max-w-full p-4"
