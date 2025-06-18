@@ -1,7 +1,6 @@
 'use client'
 
 import { getCompoundDetails } from '../../utils/pubchem';
-import { Compound } from '../../types';
 import Image from 'next/image';
 
 export default async function CompoundPage({

@@ -19,7 +19,7 @@ export default function ChemicalStructure({ cid, name }: { cid: string; name: st
       src={`https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid=${cid}&t=l`} 
       alt={`Structure of ${name}`}
       className="max-h-full max-w-full p-4"
-      onError={() => setError(true)}
+      onError={() => setError(true)} width={200} height={200}
     />
   );
 }
