@@ -1,12 +1,15 @@
 import { getCompoundsByCategory } from '../../utils/pubchem';
 import CompoundCard from '../../components/CompoundCard';
+import { Compound } from '../../types';
 
-export default async function CategoryPage({
-  params
-}: {
-  params: { category: string }
-}) {
-  const compounds = getCompoundsByCategory(params.category);
+interface CategoryPageProps {
+  params: {
+    category: string;
+  };
+}
+
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const compounds: Compound[] = getCompoundsByCategory(params.category);
   const categoryName = params.category.charAt(0).toUpperCase() + params.category.slice(1);
 
   return (
