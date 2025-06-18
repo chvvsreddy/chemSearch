@@ -4,13 +4,9 @@ import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 import globals from "globals";
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   // Base JavaScript configuration
-  {
-    ...js.configs.recommended,
-    ignores: ["**/*.d.ts"]
-  },
+  js.configs.recommended,
   
   // TypeScript configuration
   {
@@ -52,7 +48,7 @@ export default [
     rules: {
       ...nextPlugin.configs.recommended.rules,
       ...nextPlugin.configs["core-web-vitals"].rules,
-      "@next/next/no-html-link-for-pages": "off", // Disabled for App Router
+      "@next/next/no-html-link-for-pages": "off",
     },
   },
   
@@ -73,6 +69,7 @@ export default [
       "build/",
       "coverage/",
       "public/",
+      "*.d.ts",
     ],
   },
 ];

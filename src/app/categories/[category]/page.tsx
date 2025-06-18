@@ -2,14 +2,14 @@ import { getCompoundsByCategory } from '../../utils/pubchem';
 import CompoundCard from '../../components/CompoundCard';
 import { Compound } from '../../types';
 
-// Correct props type for App Router pages
-interface CategoryPageProps {
+// Simplified props type without extending PageProps
+type CategoryPageProps = {
   params: {
     category: string;
   };
-}
+};
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default function CategoryPage({ params }: CategoryPageProps) {
   const compounds: Compound[] = getCompoundsByCategory(params.category);
   const categoryName = params.category.charAt(0).toUpperCase() + params.category.slice(1);
 
